@@ -32,6 +32,26 @@ let submitFunc = function() {
         store.getUser().setChecked(checkMail);
 
         store.fetchUsers(store.user);
+
+        let div = document.createElement('div');
+        div.innerHTML = "&#10003;&nbsp;&nbsp;";
+        div.classList.add('success-message');
+        let message = document.createTextNode("Great! We have sent you an e-mail to confirm your account");
+        div.appendChild(message);
+
+        document.getElementsByClassName('submit-click')[0].appendChild(div);
+        document.getElementById('container-form').style.border = "2px solid green";
+        document.getElementById('submit').style.backgroundColor = "#45a049";
+        document.getElementById('submit').disabled = true;
+
+        setTimeout(function(){
+            document.getElementsByClassName("success-message")[0].remove();
+            document.getElementById('container-form').style.border = "";
+            document.getElementById('submit').style.backgroundColor = "#247255";
+            document.getElementById('submit').disabled = false;
+        }, 3000)
+        
+
         return false;
     }
     
